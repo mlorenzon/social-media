@@ -361,7 +361,7 @@ draws:
 | Basemap | Works still to re-bake |
 |---|---|
 | 1783 | `mozart-linz` |
-| 1800 | `beethoven-no-4` … `beethoven-no-8` (five) |
+| 1800 | `beethoven-no-5` … `beethoven-no-8` (four) |
 | 1815 | `beethoven-no-9` |
 | 1880 | `brahms-no-4` |
 | 1938 | `shostakovich-leningrad` (highlight only — needs the label) |
@@ -442,9 +442,9 @@ flip lands on "Listen out for", the fourteen captions sit in the band, and
 through it yet**, so the numbers most likely to move on first contact are
 `CFG.safe` and the caption budget.
 
-**The AE project now holds three works: `beethoven-no-1`,
-`beethoven-no-2` and `beethoven-no-3`** (23–26 Aug 2026). The
-other eleven were deleted from the project deliberately — it is the first to be
+**The AE project now holds four works: `beethoven-no-1`,
+`beethoven-no-2`, `beethoven-no-3` and `beethoven-no-4`** (23–27 Aug 2026). The
+other eight were deleted from the project deliberately — it is the first to be
 recorded, and a project with twelve works in it is twelve things to scroll
 past. Nothing was lost: `SOTD.buildWork(slug)` rebuilds any of them from the
 work JSON, and every frozen map is still on disk in `data/maps/<slug>/`, which
@@ -680,6 +680,85 @@ either way for the other six.
 was missing again too** — the spoken version has no "listen out for" at all — and
 was set by hand to 32.92 s, the sentence turning from the Napoleon story to the
 music itself. That is 46.7% of the reel, between No. 1's 40% and No. 2's 64%.
+
+**`beethoven-no-4` is shot, cut and posted** (27 Aug 2026): a 43.3 s take in, a
+**41.68 s reel** out at −14.62 LUFS, true peak −1.21 dBFS,
+`out/beethoven-no-4.mp4`. 28 caption lines, longest 31 characters, all inside
+the band. Verified off the mastered file: card 1 at "aged 36", the flip edge-on
+at 23.26 s, card 2's four facts, and the map settled on Grätz under its
+AUSTRIAN EMPIRE label. The turn cue was missing again and was set by hand to
+**22.96 s — "But I love the slow, eerie introduction"**, the sentence that turns
+from the apology about Nos. 3 and 5 to the music itself. That is 55.1% of the
+reel, between No. 3's 46.7% and No. 2's 64%.
+
+**Its label is `AUSTRIAN EMPIRE`, not the HABSBURG MONARCHY that Nos. 1–3
+carry, and that is correct rather than a lapse.** The Austrian Empire was
+proclaimed in August 1804, so it is the right polity for an 1806 work while
+Habsburg Monarchy is right for 1800–1803. `map_focus.py` reports the label's
+source as the research record, not the basemap, so this is not the
+anachronism the basemap's own wording would have introduced. Its map also
+centres on **Grätz near Troppau**, Oppersdorff's estate, not Vienna. The `LOOK`
+line resolved clean on inspection — the name prints well inside the highlight at
+full size — so it needs no `--nudge-lon`. `mapDraw` was skipped again (1800
+borders already drawn), and `mapFinalize` reported `tilesGained: 0` for the
+third time; resolved by looking at the container comp at three times, which
+showed complete tiles at every zoom level.
+
+**`freezeMapRender` returns before the frames are on disk, and the next call
+will bake that race in.** It reported `{rendered: true, frames: 136}` while only
+46 PNGs existed; `freezeMapAttach` in the following call therefore interpreted a
+**46-frame, 1.84 s sequence**, and nothing in either return value said so — the
+map move would simply have run out a quarter of the way through. Nothing warns,
+because both calls succeeded. **Count the frames on disk before attaching:**
+
+```bash
+ls data/maps/<slug>/*.png | wc -l      # wait for the full 136
+```
+
+If it is already attached short, `footageItem.mainSource.reload()` re-scans the
+sequence and reports the true duration — but the time-remap keys were built
+against the short version, so the fix is to reload *and then* re-run
+`SOTD.buildWork(slug)`, which re-derives the remap against the complete bake.
+Confirmed by inspecting the `FROZEN MAP` layer: 46 frames before, 136 after.
+
+**A laptop on battery starves the bridge, and it looks exactly like a closed
+panel.** `check-bridge` timed out identically to the panel-not-open case, and
+the hint sends you to Window > mcp-bridge-auto.jsx — but the panel *was* open.
+AE was throttled and burning ~4.7 cores, and the panel polls on the UI thread,
+so it never serviced the command. The tells, from outside AE: the process is
+alive with a real `MainWindowTitle`, `Responding` is true, there is no `#32770`
+dialog, and `ae_command.json` sits at `"status": "pending"` while
+`ae_mcp_result.json` still says `waiting`. **Check the power state and AE's CPU
+before concluding the panel is shut** — plugging in fixed it with no restart, and
+restarting would have armed the crash-repair dialog for nothing.
+
+**No. 4's spoken and printed age is 36, and the record now says 35.** It shipped
+at 36 because that is what he recorded: correcting the card alone would have put
+35 on screen against a voice and a caption both saying 36. `composer.born_date`
+is now recorded, so the record derives **35** with a loud warning that the age is
+either 35 or 36 — `composition.date` is `1806` and no finer, and the 17 December
+birthday falls inside the year. Settling it needs Grove and a
+`composition.completed`. **So `out/beethoven-no-4.mp4` is deliberately stale
+against its own record, exactly as No. 1's reel is**: re-rendering would fix the
+card and leave the voice wrong. It needs a re-record, or it goes out as it is.
+
+Two things to change at the source, both of which recurred:
+
+1. **Four takes, four with no head silence.** `silencedetect` put speech at
+   0.000 again, so `HEAD_PAD` had nothing to trim into and the reel opens on the
+   attack of "Symphony". It is still the one thing that cannot be fixed
+   downstream.
+2. **He sat closer than in Nos. 1–3, and the beard pays for it.** Hair-to-beard
+   measured 705 px against No. 1's 560. The solver still put the hair at reel
+   y 22.4 — identical to No. 1's accepted framing, so the hard constraint held —
+   but the beard now dips **52.7 px** under the card top at its lowest moment
+   where No. 1 dips 17.2. It reads fine, and it is the correct side of the
+   trade-off to lose on, but sitting back a little buys it back for nothing.
+
+Also worth knowing: **the take was quiet and had no `_enhanced.mp4`.** It
+measured **−25.74 LUFS** in, against a −14.62 out, so the master carries about
+11 dB of gain. It sounds acceptable, but the enhanced copy — when one exists — is
+still the better input.
 
 ## Conventions
 

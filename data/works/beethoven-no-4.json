@@ -56,5 +56,167 @@
       },
       "source": "given"
     }
+  },
+  "video": {
+    "take": "data/takes/beethoven-no-4/locked.mp4",
+    "source": "data/takes/beethoven-no-4/take_raw.mp4",
+    "duration": 41.662,
+    "cut": {
+      "in": 0.0,
+      "out": 41.662
+    },
+    "timings": {
+      "revealStart": 5.53,
+      "revealDuration": 0.75,
+      "turnAt": 22.96,
+      "turnDuration": 0.6
+    },
+    "captions": [
+      {
+        "t": 0.0,
+        "d": 1.84,
+        "text": "Symphony of the Day"
+      },
+      {
+        "t": 1.94,
+        "d": 1.185,
+        "text": "This is my new favourite"
+      },
+      {
+        "t": 3.2,
+        "d": 1.4,
+        "text": "symphony, at least until"
+      },
+      {
+        "t": 4.6,
+        "d": 0.65,
+        "text": "tomorrow."
+      },
+      {
+        "t": 5.58,
+        "d": 0.72,
+        "text": "Today we're listening"
+      },
+      {
+        "t": 6.3,
+        "d": 1.78,
+        "text": "to Beethoven's Symphony No. 4"
+      },
+      {
+        "t": 8.08,
+        "d": 1.38,
+        "text": "in B flat major, composed"
+      },
+      {
+        "t": 9.46,
+        "d": 2.615,
+        "text": "in 1806 for Count Oppersdorff"
+      },
+      {
+        "t": 12.38,
+        "d": 1.4,
+        "text": "and his private orchestra,"
+      },
+      {
+        "t": 13.78,
+        "d": 2.08,
+        "text": "when the composer was just 36"
+      },
+      {
+        "t": 15.86,
+        "d": 0.82,
+        "text": "years old."
+      },
+      {
+        "t": 16.86,
+        "d": 1.22,
+        "text": "To be honest, I haven't given"
+      },
+      {
+        "t": 18.08,
+        "d": 1.14,
+        "text": "this one the attention it"
+      },
+      {
+        "t": 19.22,
+        "d": 1.575,
+        "text": "deserves, because the third"
+      },
+      {
+        "t": 21.02,
+        "d": 1.08,
+        "text": "and fifth symphonies are"
+      },
+      {
+        "t": 22.1,
+        "d": 0.86,
+        "text": "so famous."
+      },
+      {
+        "t": 22.96,
+        "d": 2.34,
+        "text": "But I love the slow, eerie"
+      },
+      {
+        "t": 25.3,
+        "d": 2.5,
+        "text": "introduction in the dark before"
+      },
+      {
+        "t": 27.8,
+        "d": 1.52,
+        "text": "the major key dawns,"
+      },
+      {
+        "t": 29.32,
+        "d": 1.5,
+        "text": "and the second movement has so"
+      },
+      {
+        "t": 30.82,
+        "d": 1.38,
+        "text": "many interesting moments"
+      },
+      {
+        "t": 32.2,
+        "d": 1.32,
+        "text": "with just a few instruments"
+      },
+      {
+        "t": 33.52,
+        "d": 1.9,
+        "text": "in curious combinations, great"
+      },
+      {
+        "t": 35.42,
+        "d": 1.06,
+        "text": "to listen out for."
+      },
+      {
+        "t": 36.82,
+        "d": 0.94,
+        "text": "Thanks for watching."
+      },
+      {
+        "t": 37.76,
+        "d": 1.14,
+        "text": "Listen to symphonies and get"
+      },
+      {
+        "t": 38.9,
+        "d": 1.36,
+        "text": "your attention span back."
+      },
+      {
+        "t": 40.44,
+        "d": 0.68,
+        "text": "See you tomorrow."
+      }
+    ],
+    "framing": {
+      "zoom": 1.099,
+      "x": 540.0,
+      "y": 885.0
+    }
   }
 }
