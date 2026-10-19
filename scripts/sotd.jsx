@@ -28,7 +28,7 @@ var SOTD = (function () {
     // ---------------------------------------------------------------- config
 
     var CFG = {
-        root: "C:/Users/mlorenzon/Desktop/random/symphony of the day",
+        root: "C:/Users/mlorenzon/Desktop/random/social-media",
 
         reel:   { w: 1080, h: 1920, fps: 25, dur: 30 },
         card:   { w: 440,  h: 616 },          // 5:7, standard collector-card ratio

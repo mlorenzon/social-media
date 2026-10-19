@@ -51,3 +51,9 @@ out/
 #   .venv-asr/Scripts/python -m pip install faster-whisper
 # (the model itself caches into data/.cache/, already ignored above)
 .venv-asr/
+
+# Reference reels read by scripts/watch_reel.py. The download, its metadata,
+# the audio and the frame sheets are all regenerable from the URL in read.md,
+# which IS tracked — it holds the counts, caption and transcript.
+data/watched/*/*
+!data/watched/*/read.md
