@@ -57,7 +57,7 @@ any *other* warning; do not `--force` past one without saying so.
 ## 4. Build the comps
 
 ```js
-$.evalFile(new File("C:/Users/mlorenzon/Desktop/random/symphony of the day/scripts/sotd.jsx"));
+$.evalFile(new File("C:/Users/mlorenzon/Desktop/random/social-media/scripts/sotd.jsx"));
 return SOTD.buildWork("<slug>");
 ```
 

@@ -1,9 +1,23 @@
 # Working in this repo
 
-Motion graphics for the "symphony of the day" reels: a 1080×1920 vertical comp
-with two collector cards in the bottom third, over a GEOlayers 3 historical map.
-After Effects is driven programmatically through the `AfterEffectsMCP`
-connector.
+Matthew's social-media content and strategy, as a repo: the research behind
+what gets made, the pipelines that make it, and the reading of what worked.
+Two strands so far:
+
+- **Symphony of the Day** — the reel series. Motion graphics: a 1080×1920
+  vertical comp with two collector cards in the bottom third, over a GEOlayers 3
+  historical map, After Effects driven programmatically through the
+  `AfterEffectsMCP` connector. Most of this file is about it.
+- **Beethoven's Health** — a reel (likely a series) from the quotation research
+  in the vault. Its brief, findings and pilot are in
+  `docs/beethoven-health-reel.md`; the method for studying reference reels that
+  serves both strands is in `docs/format-research.md`.
+
+The repo was `symphony-of-the-day` until 19 Oct 2026; the series keeps that
+name (`sotd.jsx`, `SOTD.*`, `/sotd`, the Zotero collection, the vault folder),
+the repo does not. The laptop checkout lives at
+`C:/Users/mlorenzon/Desktop/random/social-media` — `CFG.root` in `sotd.jsx` and
+the `$.evalFile` lines below depend on that folder name.
 
 ## Read first
 
@@ -13,8 +27,10 @@ connector.
 | The recorded take, subtitles, the cut, rendering | [`docs/reel-edit.md`](docs/reel-edit.md) |
 | The map, GEOlayers, geojson | [`docs/geolayers-3-via-mcp.md`](docs/geolayers-3-via-mcp.md) |
 | Researching a work, sources, Zotero, the vault | [`docs/research-engine.md`](docs/research-engine.md) |
+| Studying a reference reel, what formats work and why | [`docs/format-research.md`](docs/format-research.md) |
+| The Beethoven's Health reel — brief, findings, the pilot | [`docs/beethoven-health-reel.md`](docs/beethoven-health-reel.md) |
 
-All four are field notes verified against a live install, and all four have a
+All of them are field notes verified against a live install, and all have a
 **Traps** section. Reading the relevant one first reliably saves more time than
 it costs — several of the traps fail silently rather than erroring.
 
@@ -64,7 +80,7 @@ Every `execute-script` call runs in a fresh function scope, so re-load the
 library at the top of each call that needs it:
 
 ```js
-$.evalFile(new File("C:/Users/mlorenzon/Desktop/random/symphony of the day/scripts/sotd.jsx"));
+$.evalFile(new File("C:/Users/mlorenzon/Desktop/random/social-media/scripts/sotd.jsx"));
 return SOTD.buildWork("mozart-linz");
 ```
 
@@ -773,8 +789,10 @@ still the better input.
 - Python is stdlib plus `requests` and `Pillow`, and `yt-dlp` + `ffmpeg` for
   `fetch_sfx.py`. `ffmpeg` also cuts and masters the reel. The one dependency
   outside that is **faster-whisper, quarantined in `.venv-asr/`** and used by
-  exactly one script — nothing else imports it, and the rest of the pipeline
-  runs without it. ExtendScript is ES3: no `let`, no arrow functions, no
+  exactly two scripts — `take_transcribe.py` for the take's word timings and
+  `watch_reel.py` for reading a reference reel (which also keeps its `yt-dlp`
+  there). Nothing else imports it, and the rest of the pipeline runs without
+  it. `data/watched/` is the reference reels: only each `read.md` is tracked. ExtendScript is ES3: no `let`, no arrow functions, no
   template literals.
 - Fonts are Cambria for text and Trajan Pro 3 for caps — **Regular only**, so
   `CFG.font.capsBold` is Trajan Regular too. Trajan is an Adobe Fonts
