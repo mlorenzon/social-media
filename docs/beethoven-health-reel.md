@@ -2,8 +2,9 @@
 
 Where the project stands at the end of the Pi session of 19 October 2026, so
 the laptop session (which has Claude in Chrome and can open Instagram) can pick
-it up without redoing the research. Method and the reference reels are in
-[`format-research.md`](format-research.md).
+it up without redoing the research. The method is in
+[`format-research.md`](format-research.md) and the reels studied and what they
+showed are in [`history-education-formats.md`](history-education-formats.md).
 
 ## The brief
 

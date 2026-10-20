@@ -18,7 +18,7 @@ things a model (or a person in a hurry) can take in without pressing play:
 
 `read.md` is the tracked artefact; everything else in the folder is a download
 and is ignored. The reading itself — what the structure is doing and why it
-works — goes in `docs/format-research.md`, not here.
+works — goes in the study document (see `docs/format-research.md`), not here.
 
 The transcript is a transcript here, not a clock: unlike `take_transcribe.py`
 we do not know the script in advance, so the words are the point and `small.en`

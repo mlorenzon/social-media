@@ -11,7 +11,8 @@ vault. The format research that serves both is here too.
 
 | Path | What it is |
 |---|---|
-| [`docs/format-research.md`](docs/format-research.md) | How to study a reference reel from a machine that cannot play one; twelve read; the six things the ones that worked share |
+| [`docs/format-research.md`](docs/format-research.md) | The process for studying a reel format from a machine that cannot play video: choosing references, reading them, deriving and testing findings |
+| [`docs/history-education-formats.md`](docs/history-education-formats.md) | The first study: twelve history, music and art reels read, and the six things the ones that worked share |
 | [`docs/beethoven-health-reel.md`](docs/beethoven-health-reel.md) | The Beethoven's Health reel: brief, what the research settled, the 1801 pilot, next steps |
 | [`docs/reel-cards.md`](docs/reel-cards.md) | The Symphony of the Day overlay card system — daily workflow, data schema, how to adapt a card, and the traps |
 | [`docs/reel-edit.md`](docs/reel-edit.md) | The recorded take → the finished Symphony of the Day reel |
@@ -35,7 +36,7 @@ python scripts/watch_reel.py https://www.instagram.com/reel/<id>/ --as <name>
 Writes `data/watched/<name>/`: a contact sheet (one frame every 3 s), an
 opening strip (the first 12 s, larger), and `read.md` with the platform's
 numbers, the caption and a timestamped transcript. One at a time. The reading
-itself goes in `docs/format-research.md`.
+itself goes in the study document; see `docs/format-research.md`.
 
 ## Making a Symphony of the Day reel
 
